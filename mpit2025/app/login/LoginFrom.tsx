@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import apiFetch from "@/lib/apiFetch";
-import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { setCookies } from "../actions";
 
 export default function LoginFrom() {
     const {push} = useRouter()
@@ -29,8 +29,7 @@ export default function LoginFrom() {
             body: JSON.stringify(data)
         });
         if(res.ok) {
-            const cookiesStore = await cookies()
-            cookiesStore.set("auth", await res.text(), {secure: true, httpOnly: true, sameSite: "strict"});
+            setCookies("auth", await res.text(), {secure: true, httpOnly: true, sameSite: "strict"});
             push("/profile")
         }
         } catch {
