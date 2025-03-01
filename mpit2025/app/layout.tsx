@@ -23,6 +23,9 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  // ИСПРАВЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  // ИСПРАВЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (
     <html lang="en">
       <body
