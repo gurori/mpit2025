@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Unbounded } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
 });
 
 export const metadata: Metadata = {
@@ -31,14 +30,12 @@ export default function RootLayout({
   // ИСПРАВЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${unbounded.variable} antialiased`}>
         <header className="sticky container flex items-center">
           <Link href={"/"}>
             <Image alt="logo" src="/logos/main.png" height={143} width={280} />
           </Link>
-          <div className="flex gap-8">
+          <div className="flex gap-8 mb-6">
             <Button variant={"ghost"}>Работодателям</Button>
             <Link href={"/register"}>
               <Button variant={"outline"} size={"lg"}>

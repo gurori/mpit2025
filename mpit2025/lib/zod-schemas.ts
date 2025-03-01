@@ -14,3 +14,8 @@ export const nameSchema = z
     "ФИО должно содержать только буквы, пробелы и дефисы"
   );
 
+export const emailSchema = z
+  .string()
+  .email("Некоректный адрес электронной почты");
+
+export const roleSchema = z.string({ message: "Необходимо выбрать 1 роль" });
