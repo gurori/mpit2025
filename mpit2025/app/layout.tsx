@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +34,65 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="sticky container flex items-center">
+          <Link href={"/"}>
+            <Image alt="logo" src="/logos/main.png" height={143} width={280} />
+          </Link>
+          <div className="flex gap-8">
+            <Button variant={"ghost"}>Работодателям</Button>
+            <Link href={"/register"}>
+              <Button variant={"outline"} size={"lg"}>
+                Войти
+              </Button>
+            </Link>
+          </div>
+        </header>
         {children}
+        <footer className="bg-gray-200">
+          <div className="container">
+            info
+            <hr className="mx-12" />
+            <div className="flex items-center place-content-between w-full">
+              <Link href={"/"}>
+                <Image
+                  alt="logo"
+                  src="/logos/main.png"
+                  height={143}
+                  width={280}
+                />
+              </Link>
+              <div className="flex items-center gap-[43px]">
+                <Link href={"/"}>
+                  <Image
+                    alt="facebook"
+                    src="/icons/facebook.png"
+                    width={39}
+                    height={39}
+                  />
+                </Link>
+                <Link href={"/"}>
+                  <Image
+                    alt="dzen"
+                    src="/icons/dzen.png"
+                    width={39}
+                    height={39}
+                  />
+                </Link>
+                <Link href={"/"}>
+                  <Image alt="vk" src="/icons/vk.png" width={52} height={52} />
+                </Link>
+                <Link href={"/"}>
+                  <Image
+                    alt="telegram"
+                    src="/icons/telegram.png"
+                    width={39}
+                    height={39}
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

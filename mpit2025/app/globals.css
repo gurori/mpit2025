@@ -127,3 +127,37 @@
     @apply bg-background text-foreground;
   }
 }
+
+.container {
+  max-width: 1200px; /* Максимальная ширина */
+  margin: 0 auto; /* Центрирование контейнера */
+  padding: 0 15px; /* Отступы по бокам */
+  display: flex; /* Используем Flexbox */
+  flex-wrap: wrap; /* Позволяет элементам оборачиваться */
+  justify-content: space-between; /* Пространство между элементами */
+}
+
+.bg-gray-200 {
+  background-color: #f5f5f5;
+}
+.bg-gray-300 {
+  background-color: #9d9d9d;
+}
+.color-gray-300 {
+  color: #9d9d9d;
+}
+
+hr {
+  @apply w-full;
+  color: rgba(0, 0, 0, 0.2);
+  height: 1px;
+}
+
+.card-md {
+  width: 440px;
+  height: 430px;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 22.7px -4px rgba(0, 0, 0, 0.25);
+  border-radius: 41px;
+}
