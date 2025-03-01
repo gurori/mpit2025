@@ -19,3 +19,5 @@ export const emailSchema = z
   .email("Некоректный адрес электронной почты");
 
 export const roleSchema = z.string({ message: "Необходимо выбрать 1 роль" });
+
+export const textSchema = z.string().min(10, "Введите не менее 10 символов");

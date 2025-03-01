@@ -46,22 +46,28 @@ export default function RegisterForm() {
   const { field } = useController({ control, name: "role" });
 
   const onSubmit = async (data: TypeFormData) => {
-    // try {
-    //     const res = await apiFetch("/api/users/register", {
-    //   method: "POST",
-    //   credentials: "include",
-    //   body: JSON.stringify(data),
-    // });
-    // if (res.ok) {
-    //     push("/login")
-    // } else {
-    //     const apiError: IApiErrorMessage = await res.json()
-    //     setFormError(apiError.detail);
-    // }
-    // } catch {
-    //     setFormError("Ошибка. Пожалуйста повторите пойзже.");
-    // }
-    push("/login")
+    console.log(data);
+    
+    try {
+        const res = await apiFetch("/api/users/register", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(data),
+      headers: {
+            "Content-Type": "application/json"
+          },
+    });
+    console.log(res);
+    
+    if (res.ok) {
+        push("/login")
+    } else {
+        const apiError: IApiErrorMessage = await res.json()
+        setFormError(apiError.detail);
+    }
+    } catch {
+        setFormError("Ошибка. Пожалуйста повторите пойзже.");
+    }
   };
 
   return (

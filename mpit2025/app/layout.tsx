@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Unbounded } from "next/font/google";
+import { Unbounded, Nobile } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import Image from "next/image";
@@ -14,6 +14,11 @@ import Link from "next/link";
 const unbounded = Unbounded({
   variable: "--font-unbounded",
 });
+
+const nobile = Nobile({
+  variable: "--font-nobile",
+  weight: ["400" , "500", "700"]
+})
 
 export const metadata: Metadata = {
   title: "ПАТРИОТ. Уран Саха",
@@ -30,7 +35,7 @@ export default function RootLayout({
   // ИСПРАВЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (
     <html lang="en">
-      <body className={`${unbounded.variable} antialiased`}>
+      <body className={`${unbounded.variable} ${nobile.variable} antialiased`}>
         <header className="relative z-50 container flex items-center">
           <Link href={"/"}>
             <Image alt="logo" src="/logos/main.png" height={143} width={280} />

@@ -1,6 +1,9 @@
+import apiFetch from "@/lib/apiFetch";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const res = await apiFetch("/api/posts")
+  const polks: any[] = await res.json()
   return <>
   <main className="relative">
     <div className="image-container -mt-32 mb-16">
@@ -21,5 +24,9 @@ export default function Home() {
     <h4>
       Уран Саха - повышение интереса и вовлечённости у молодёжи к ценностям патриотизма, проявляющееся в недостаточной осведомленности об истории и культуре своей страны.
     </h4>
+    {polks.map((p, i) => (<div key={i}>
+      <h6>{p.name}</h6>
+      <p className="description">{p.description}</p>
+    </div>))}
     </main></>;
 }
