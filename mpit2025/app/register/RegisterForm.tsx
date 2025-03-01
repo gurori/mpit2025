@@ -26,8 +26,8 @@ export default function RegisterForm() {
     const {push} = useRouter()
     const [formError, setFormError] = useState("");
   const userSchema = z.object({
-    login: nameSchema,
-    email: emailSchema,
+    firstName: nameSchema,
+    login: emailSchema,
     password: passwordSchema,
     role: roleSchema,
   });
@@ -67,19 +67,19 @@ export default function RegisterForm() {
     <form className="grid gap-2 mt-6" onSubmit={handleSubmit(onSubmit)}>
         <p className="text-red-400">{formError}</p>
       <input
-        {...register("login")}
+        {...register("firstName")}
         className="gray"
         placeholder="Имя"
         type="text"
       />
-      <div>{errors.login && <p className="text-red-400">{errors.login.message}</p>}</div>
+      <div>{errors.firstName && <p className="text-red-400">{errors.firstName.message}</p>}</div>
       <input
-        {...register("email")}
+        {...register("login")}
         className="gray"
         placeholder="Почта"
         type="text"
       />
-      <div>{errors.email && <p className="text-red-400">{errors.email.message}</p>}</div>
+      <div>{errors.login && <p className="text-red-400">{errors.login.message}</p>}</div>
       <input
         {...register("password")}
         className="gray"

@@ -1,26 +1,61 @@
 "use client"
 
-import { passwordSchema } from "@/lib/zod-schemas";
+import { emailSchema, passwordSchema } from "@/lib/zod-schemas";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import apiFetch from "@/lib/apiFetch";
+import { cookies } from "next/headers";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginFrom() {
+    const {push} = useRouter()
+        const [formError, setFormError] = useState("");
     const userSchema = z.object({
-        password: passwordSchema
-    })
+    login: emailSchema,
+    password: passwordSchema,
+  });
     type TypeFormData = z.infer<typeof userSchema>;
 
-    const form = useForm<TypeFormData>({resolver: zodResolver(userSchema)});
+    const {register, handleSubmit, formState: {errors}} = useForm<TypeFormData>({resolver: zodResolver(userSchema)});
 
     const onSubmit = async (data: TypeFormData) => {
-        const res = await apiFetch("/api/users/login", {
+        try {
+            const res = await apiFetch("/api/users/login", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(data)
         });
+        if(res.ok) {
+            const cookiesStore = await cookies()
+            cookiesStore.set("auth", await res.text(), {secure: true, httpOnly: true, sameSite: "strict"});
+            push("/profile")
+        }
+        } catch {
+            setFormError("Ошибка. Пожалуйста повторите пойзже.");
+        }
     }
 
-    return <div></div>
+    return <form className="grid gap-2 mt-6" onSubmit={handleSubmit(onSubmit)}>
+        <p className="text-red-400">{formError}</p>
+      <input
+        {...register("login")}
+        className="gray"
+        placeholder="Почта"
+        type="text"
+      />
+      <div>{errors.login && <p className="text-red-400">{errors.login.message}</p>}</div>
+      <input
+        {...register("password")}
+        className="gray"
+        placeholder="Пароль"
+        type="password"
+      />
+      <div>{errors.password && <p className="text-red-400">{errors.password.message}</p>}</div>
+      <Button className="place-self-start" type="submit">
+        Продолжить
+      </Button>
+    </form>
 }
