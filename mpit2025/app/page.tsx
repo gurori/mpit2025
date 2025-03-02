@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default async function Home() {
   const res = await apiFetch("/api/posts")
+  console.log(res);
   const polks: any[] = await res.json()
+  console.log(polks);
+  
   return <>
   <main className="relative">
     <div className="image-container -mt-32 mb-16">
