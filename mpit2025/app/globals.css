@@ -127,3 +127,147 @@
     @apply bg-background text-foreground;
   }
 }
+
+.container {
+  max-width: 1200px; /* Максимальная ширина */
+  margin-left: auto;
+  margin-right: auto; /* Центрирование контейнера */
+  padding: 0 15px; /* Отступы по бокам */
+  display: flex; /* Используем Flexbox */
+  flex-wrap: wrap; /* Позволяет элементам оборачиваться */
+  justify-content: space-between; /* Пространство между элементами */
+}
+
+.bg-gray-200 {
+  background-color: #f5f5f5;
+}
+.bg-gray-300 {
+  background-color: #9d9d9d;
+}
+.bg-gray-400 {
+  background-color: #8c999a;
+}
+.color-gray-300 {
+  color: #9d9d9d;
+}
+
+hr {
+  @apply w-full;
+  color: rgba(0, 0, 0, 0.2);
+  height: 1px;
+}
+
+.card-md {
+  width: clamp(360px, 40vw, 440px);
+  background: #ffffff;
+  box-shadow: 0px 0px 22.7px -4px rgba(0, 0, 0, 0.25);
+  border-radius: 41px;
+
+  padding: 47px;
+}
+
+.center {
+  @apply flex items-center justify-center;
+}
+
+h2 {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 79px;
+
+  color: #000000;
+}
+
+h3 {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 43px;
+
+  color: #000000;
+}
+
+h4 {
+  /* Уран Саха - повышение интереса и вовлечённости у молодёжи к ценностям патриотизма, проявляющееся в недостаточной осведомленности об истории и культуре своей страны. */
+
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 150%;
+  /* or 68px */
+  letter-spacing: -0.022em;
+
+  color: rgba(0, 0, 0, 0.8);
+}
+
+h6 {
+
+font-family: 'Unbounded';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 150%;
+letter-spacing: -0.022em;
+
+}
+
+input.gray,
+.input-gray,
+textarea.gray {
+  box-sizing: border-box;
+
+  padding: 8px 18px;
+
+  background: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+}
+
+.image-container {
+  position: relative; /* Позволяет размещать псевдоэлементы относительно контейнера */
+  overflow: hidden; /* Обрезает все, что выходит за пределы контейнера */
+}
+
+.image-container * {
+  display: block; /* Убирает отступы вокруг изображения */
+  width: 100%; /* Задает ширину изображения */
+  height: auto; /* Сохраняет пропорции изображения */
+}
+
+.image-container::before {
+  content: "";
+  position: absolute; /* Позволяет разместить псевдоэлемент поверх изображения */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Задает размеры псевдоэлемента, чтобы он покрывал всё изображение */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 100px,
+    rgba(255, 255, 255, 0) 300px
+  );
+  pointer-events: none; /* Разрешает взаимодействие с изображением под псевдоэлементом */
+}
+
+.main-title {
+  position: absolute;
+  height: clamp(60px, 100%, 300px);
+  width: clamp(250px, 50vw, 1100px);
+  top: 25%;
+  left: 25%;
+}
+
+.description {
+
+font-family: 'Unbounded';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+
+color: rgba(0, 0, 0, 0.7);
+}
