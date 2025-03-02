@@ -13,10 +13,12 @@ import Link from "next/link";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
+  subsets: ["latin"],
 });
 
 const nobile = Nobile({
   variable: "--font-nobile",
+  subsets: ["latin"],
   weight: ["400" , "500", "700"]
 })
 
@@ -30,7 +32,7 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  
+
   return (
     <html lang="en">
       <body className={`${unbounded.variable} ${nobile.variable} antialiased`}>
