@@ -41,7 +41,17 @@ export default async function ProfilePage() {
               </div>
               <div className="grid place-content-start gap-2">
                 <p className={s.role}>{user.role}</p>
-                <p className={s.name}>{user.firstName}</p>
+                <p className={cn(s.name, "flex place-items-center gap-2")}>
+                  {user.firstName}{" "}
+                  {user.coins > 50 && (
+                    <Image
+                      alt="icon"
+                      src={"/icons/skin.png"}
+                      height={28}
+                      width={38}
+                    />
+                  )}
+                </p>
               </div>
             </div>
             <div className="flex gap-6">
@@ -71,7 +81,12 @@ export default async function ProfilePage() {
               </Link>
             </div>
             <Link href={"/polk/new"} className="justify-self-center my-10">
-              <Image alt="new post" src={"/images/new-polk.png"} height={100} width={360} />
+              <Image
+                alt="new post"
+                src={"/images/new-polk.png"}
+                height={100}
+                width={360}
+              />
             </Link>
           </div>
         </div>
