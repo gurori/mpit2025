@@ -17,7 +17,7 @@ export default async function ProfileRedirectPage() {
     })
     if (!res.ok) {
         console.log(res);
-        redirect("/")
+        redirect("/register")
     }
     const role = await res.text()
     redirect(`/profile/${role.toLowerCase()}`)

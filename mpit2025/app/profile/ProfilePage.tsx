@@ -71,9 +71,7 @@ export default async function ProfilePage() {
               </Link>
             </div>
             <Link href={"/polk/new"} className="justify-self-center my-10">
-              <Button size={"lg"} className="bg-[#C14920]">
-                Бессмертный полк
-              </Button>
+              <Image alt="new post" src={"/images/new-polk.png"} height={100} width={360} />
             </Link>
           </div>
         </div>

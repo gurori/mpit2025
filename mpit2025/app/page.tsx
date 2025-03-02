@@ -20,10 +20,11 @@ export default async function Home() {
       </div>
     </div>
   </main>
-  <main className="container my-20">
+  <main className="container my-20 grid">
     <h4>
       Уран Саха - повышение интереса и вовлечённости у молодёжи к ценностям патриотизма, проявляющееся в недостаточной осведомленности об истории и культуре своей страны.
     </h4>
+    <h3 className="pt-20 pb-10">Публикации бессмертного полка</h3>
     {polks.map((p, i) => (<div key={i}>
       <h6>{p.name}</h6>
       <p className="description">{p.description}</p>

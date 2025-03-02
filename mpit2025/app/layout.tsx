@@ -41,10 +41,12 @@ export default function RootLayout({
             <Image alt="logo" src="/logos/main.png" height={143} width={280} />
           </Link>
           <div className="flex gap-8 mb-6">
-            <Button variant={"ghost"}>Работодателям</Button>
-            <Link href={"/register"}>
+            <Link href={"/"}>
+            <Button variant={"ghost"}>Главная</Button>
+            </Link>
+            <Link href={"/profile"}>
               <Button variant={"outline"} size={"lg"}>
-                Войти
+                Личный кабинет
               </Button>
             </Link>
           </div>

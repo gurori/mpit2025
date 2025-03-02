@@ -71,7 +71,7 @@ export default function LoginFrom() {
           <p className="text-red-400">{errors.password.message}</p>
         )}
       </div>
-      <Button className="place-self-start" type="submit">
+      <Button className="place-self-start mb-4" type="submit">
         Продолжить
       </Button>
     </form>

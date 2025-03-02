@@ -5,7 +5,7 @@ import s from "./Polk.module.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { z } from "zod";
-import { nameSchema, textSchema } from "@/lib/zod-schemas";
+import { textSchema } from "@/lib/zod-schemas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import apiFetch from "@/lib/apiFetch";
@@ -15,7 +15,7 @@ export default function PolkForm({token}: {token: string}) {
   const { push } = useRouter();
   const [formError, setFormError] = useState("");
   const polkSchema = z.object({
-    name: nameSchema,
+    name: textSchema,
     description: textSchema,
   });
   type TypeFormData = z.infer<typeof polkSchema>;
@@ -56,7 +56,7 @@ export default function PolkForm({token}: {token: string}) {
     <form action="" className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
       {formError}
       <label className="space-y-2 md:flex md:justify-between md:items-center">
-        <p>ФИО</p>
+        <p>Заголовок</p>
         <input
           className={cn("gray", s.input)}
           type="text"
