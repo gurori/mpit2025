@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "ПАТРИОТ. Уран Саха",
   description: "Патриотический сайт для молодежи, направленный на патриотичсекое воспитание, сохранение исторической памяти и вовлечение молодежи в активную общественную жизнь",
 };
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED="0";
 export default function RootLayout({
   children,
 }: Readonly<{
